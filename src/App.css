@@ -1,9 +1,6 @@
-.App {
-  text-align: center;
-}
 .calendar {
   font-family: Arial, sans-serif;
-  max-width: 600px;
+  max-width: 70%;
   margin: auto;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
@@ -36,14 +33,18 @@
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  background-color: #fff;
+  border-left: 1px solid #e2e3e5;
 }
 
 .day {
+  position: relative;
   padding: 10px;
   text-align: right;
   border-bottom: 1px solid #e2e3e5;
   border-right: 1px solid #e2e3e5;
-  position: relative;
+  min-height: 100px; /* Adjust height as needed */
+  overflow: hidden; /* Prevents content from spilling over */
 }
 
 .day:last-child {
@@ -58,22 +59,31 @@
   position: absolute;
   bottom: 5px;
   left: 5px;
+  right: 5px;
+  max-height: 90px; /* Limit event block height */
+  overflow-y: auto; /* Enables scrolling for multiple events */
 }
 
 .event {
-  display: inline-block;
-  padding: 2px 5px;
+  display: block;
+  padding: 5px;
   border-radius: 4px;
   color: white;
   font-size: 12px;
-  margin-right: 4px;
+  margin-top: 2px;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.event-time {
+  display: block; /* Ensures the time is on a separate line */
+  font-size: 10px;
+}
+
+.event-title {
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Keeps the event title on one line */
 }
